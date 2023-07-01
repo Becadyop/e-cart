@@ -1,0 +1,88 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+</script>
+<style>
+@media (min-width: 1025px) {
+.h-custom
+{
+height: 100vh !important;
+}
+}
+</style>
+</head>
+{{!-- <section class="h-100 h-custom" style="background-color: #eee;"> --}}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+              <div class="col-lg-7" style="width: 1090px;">
+                <h5 class="mb-3"><a href="/" class="text-body" style="color:rgb(255, 0, 0)"><a href="/">
+                <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <p style="text-transform: uppercase;color:blue;text-decoration:underline;font-weight:800px;">Shopping cart</p>
+                    <p class="mb-0">You have <span style="text-transform: uppercase;color:blueviolet">{{data.totalItems}}</span> items in your cart</p>
+                  </div>
+                </div>
+              {{#each products}}  
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="/images/Products/{{item._id}}"class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5 style="color: rgb(65, 13, 13);"><span style="text-transform: uppercase;color:rgb(0, 0, 0)">{{item.email}}</span></h5>
+                          <p style="text-transform:uppercase"><span style="color:rgb(179, 117, 3)">{{ item.descri}}</span></p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">  
+                        <div style="width: 90px;">
+                          <h5 class="fw-normal mb-0">{{quantity}}</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 style="color:red"><span style="color: rgb(5, 2, 2);font-weight:800px">&#8377;</span>:{{item.price}}</h5>
+                        </div>
+                        {{!-- <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a> --}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between">
+                      <p style="color: red;text-transform:uppercase;font-family:sans-serif">TOTAL AMOUNT</p>
+                      <p class="mb-2">{{data.totalPrice}}</p>
+                    </div>
+                    {{!-- <button type="button" class="btn btn-info btn-block btn-lg"> --}}
+                      <div class="d-flex justify-content-between">
+                        <a style="color: red;text-transform:uppercase;text-decoration:none;transition:.5s ease all; margin-top:2%" href="/checkout/{{data.totalPrice}}" class="btn btn-block btn-lg">Check Out</a>
+                        {{!-- <span>$4818.00</span>
+                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span> --}}
+                      </div>
+                    </button>
+
+                  </div>
+                {{!-- </div> --}}
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
